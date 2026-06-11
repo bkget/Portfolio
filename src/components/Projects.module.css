@@ -1,0 +1,204 @@
+.projectsSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  width: 100%;
+}
+
+.cardsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.projectCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.projectCardActive {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 20px rgba(0, 242, 254, 0.08);
+}
+
+.projectHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.projectTitle {
+  font-size: 1.4rem;
+  font-family: var(--font-display);
+  color: var(--text-primary);
+}
+
+.projectLink {
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+}
+
+.projectLink:hover {
+  color: var(--accent-cyan);
+}
+
+.techStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bullets li {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  position: relative;
+  padding-left: 1rem;
+}
+
+.bullets li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--accent-cyan);
+}
+
+.runBtn {
+  align-self: flex-start;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  padding: 0.5rem 1.2rem;
+  background: transparent;
+  color: var(--accent-cyan);
+  border: 1px solid var(--accent-cyan);
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.3s ease;
+}
+
+.runBtnActive {
+  background: var(--gradient-cyan-blue);
+  color: #030712;
+  border-color: transparent;
+  box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+}
+
+.runBtn:hover:not(.runBtnActive) {
+  background: rgba(0, 242, 254, 0.08);
+  box-shadow: 0 0 10px rgba(0, 242, 254, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Terminal Simulator Styling */
+.terminalContainer {
+  background: #030307;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 480px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+}
+
+.terminalHeader {
+  background: #0a0a0f;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.terminalDots {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dotRed { background: #ff5f56; }
+.dotYellow { background: #ffbd2e; }
+.dotGreen { background: #27c93f; }
+
+.terminalTitle {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.terminalBody {
+  padding: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: #a7f3d0; /* Emerald green tint */
+  overflow-y: auto;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  scroll-behavior: smooth;
+}
+
+.logLine {
+  white-space: pre-wrap;
+  line-height: 1.4;
+}
+
+.logTimestamp {
+  color: var(--text-muted);
+  margin-right: 0.5rem;
+}
+
+.logLevelInfo {
+  color: #60a5fa; /* Blue info level */
+}
+
+.logLevelSuccess {
+  color: #34d399; /* Green success level */
+}
+
+.logLevelWarning {
+  color: #fbbf24; /* Yellow warn level */
+}
+
+.logCursor {
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  background: var(--accent-cyan);
+  animation: blink 1s step-start infinite;
+  vertical-align: middle;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+@media (max-width: 992px) {
+  .projectsSection {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .terminalContainer {
+    height: 350px;
+  }
+}
