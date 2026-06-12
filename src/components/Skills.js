@@ -16,38 +16,34 @@ const categories = [
 const skills = [
   // Languages
   { name: 'Python', category: 'languages' },
-  { name: 'SQL', category: 'languages' },
   { name: 'Scala', category: 'languages' },
-  { name: 'PL/SQL', category: 'languages' },
-  { name: 'Java', category: 'languages' },
+  { name: 'SQL', category: 'languages' },
+  { name: 'PL/SQL', category: 'languages' }, 
   { name: 'JavaScript', category: 'languages' },
-  { name: 'Bash', category: 'languages' },
-  { name: 'PowerShell', category: 'languages' },
 
   // Processing & ETL
   { name: 'Apache Airflow', category: 'processing' },
   { name: 'Apache Spark', category: 'processing' },
-  { name: 'dbt (data build tool)', category: 'processing' },
-  { name: 'Apache Kafka', category: 'processing' },
-  { name: 'Fivetran', category: 'processing' },
+  { name: 'Apache Trino', category: 'processing' },
+  { name: 'Data Build Tool (dbt)', category: 'processing' },
+  { name: 'Apache Kafka', category: 'processing' }, 
+  { name: 'Salesforce Marketing Cloud (SFMC)', category: 'processing' },
   { name: 'Druid', category: 'processing' },
   { name: 'Azure Data Factory', category: 'processing' },
   
   // Storage & Warehousing
   { name: 'Amazon Redshift', category: 'storage' },
   { name: 'Snowflake', category: 'storage' },
-  { name: 'Google BigQuery', category: 'storage' },
   { name: 'AWS S3', category: 'storage' },
   { name: 'Google Cloud Storage', category: 'storage' },
+  { name: 'Google BigQuery', category: 'storage' },
   { name: 'PostgreSQL', category: 'storage' },
   { name: 'MySQL', category: 'storage' },
   { name: 'Oracle DB', category: 'storage' },
-  { name: 'MS SQL Server', category: 'storage' },
-  { name: 'HDFS', category: 'storage' },
+  { name: 'MS SQL Server', category: 'storage' }, 
 
   // BI & Analytics
   { name: 'Apache Superset', category: 'analytics' },
-  { name: 'Redash', category: 'analytics' },
   { name: 'Power BI', category: 'analytics' },
   { name: 'Looker Studio', category: 'analytics' },
   { name: 'Pandas', category: 'analytics' },
@@ -55,10 +51,9 @@ const skills = [
   // DevOps & MLOps
   { name: 'Docker', category: 'devops' },
   { name: 'GitHub Actions', category: 'devops' },
-  { name: 'GitLab', category: 'devops' },
-  { name: 'DVC (Data Version Control)', category: 'devops' },
-  { name: 'MLOps', category: 'devops' },
-  { name: 'Salesforce SFMC', category: 'devops' }
+  { name: 'GitHab', category: 'devops' },
+  { name: 'GitLab', category: 'devops' }, 
+  { name: 'Bash', category: 'devops' }, 
 ];
 
 export default function Skills() {
