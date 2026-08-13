@@ -153,6 +153,16 @@
   animation: fadeIn 0.4s ease-out;
 }
 
+.errorMessage {
+  padding: 1rem 1rem 0.75rem;
+  border-radius: 0.75rem;
+  background: rgba(255, 77, 79, 0.1);
+  color: #ff4d4f;
+  border: 1px solid rgba(255, 77, 79, 0.2);
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
 @media (max-width: 768px) {
   .contactGrid {
     grid-template-columns: 1fr;

@@ -1,27 +1,45 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle, Loader } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, Loader, AlertCircle } from 'lucide-react';
 import styles from './Contact.module.css';
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
-  const [status, setStatus] = useState('idle'); // idle, loading, success
+  const [status, setStatus] = useState('idle');
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) return;
-    
+
     setStatus('loading');
-    setTimeout(() => {
+    setError('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || 'Unable to send message.');
+      }
+
       setStatus('success');
       setForm({ name: '', email: '', subject: '', message: '' });
-      setTimeout(() => setStatus('idle'), 5000); // clear success state after 5 seconds
-    }, 1500);
+      setTimeout(() => setStatus('idle'), 5000);
+    } catch (err) {
+      console.error('Contact error:', err);
+      setStatus('error');
+      setError(err.message || 'Failed to send message. Please try again.');
+    }
   };
 
   return (
@@ -80,6 +98,13 @@ export default function Contact() {
           </div>
         ) : (
           <form className={styles.form} onSubmit={handleSubmit}>
+            {(status === "error" || error) && (
+              <div className={styles.errorMessage}>
+                <AlertCircle size={16} />
+                <span>{error}</span>
+              </div>
+            )}
+
             <div className={styles.row}>
               <div className={styles.inputGroup}>
                 <input
@@ -145,7 +170,7 @@ export default function Contact() {
               className="btn btn-primary submitBtn"
               disabled={status === 'loading'}
             >
-              {status === 'loading' ? (
+              {status === "loading" ? (
                 <>
                   <Loader size={16} className="animate-float" /> Sending...
                 </>

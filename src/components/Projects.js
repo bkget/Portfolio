@@ -6,62 +6,89 @@ import styles from './Projects.module.css';
 
 const projects = [
   {
-    id: 'ad_analysis',
-    title: 'Advertisement Data Analysis',
-    githubUrl: 'https://github.com/bkget/Ad-Challenge',
-    tech: ['Python', 'SQL', 'dbt', 'Airflow', 'PostgreSQL', 'Docker', 'Machine Learning'],
+    id: 'agentic_copilot',
+    title: 'Retail Agentic Copilot',
+    githubUrl: 'https://github.com/bkget/retail-agentic-copilot',
+    tech: ['Python', 'Next.js', 'PostgreSQL', 'FastAPI', 'Gemini Flash', 'sqlglot', 'Docker'],
     bullets: [
-      'Orchestrated data wrangling operations to seamlessly connect data from different stages of the creative creation and Ad placement process, resulting in a unified dataset.',
-      'Devised and deployed a cutting-edge machine learning model to accurately forecast key performance indicators using the integrated data, achieving an impressive accuracy rate of 95%.',
-      'Developed an intuitive user interface for machine learning tasks, facilitating seamless integration for predictive analytics and ensuring a streamlined workflow.'
+      'Designed a conversational analytics platform allowing users to ask plain English questions over a 1,000,000-row PostgreSQL retail sales database.',
+      'Implemented an AST-validated SQL guardrail using sqlglot to parse queries, enforce table allow-lists, and prevent DML query injections before execution.',
+      'Created a streaming SSE (Server-Sent Events) pipeline to push orchestrator statuses, generated SQL statements, narrative answers, and interactive charts live to the user.',
+      'Gated CI deployment at ≥90% execution accuracy using an automated testing accuracy harness.'
     ],
     logs: [
-      { level: 'info', text: 'Initializing Airflow DAG: ad_analysis_pipeline' },
-      { level: 'info', text: 'Task 1/4: extract_ad_impressions starting...' },
-      { level: 'info', text: 'Fetching telemetry from SFMC and Ad servers...' },
-      { level: 'success', text: 'Ingested 124,500 raw impression items to s3://raw-lake/ads/' },
-      { level: 'info', text: 'Task 2/4: location_hierarchy_cleanup starting...' },
-      { level: 'info', text: 'Standardizing Ethiopian regional hierarchies using location mappings...' },
-      { level: 'success', text: 'dbt: clean_location_coordinates [OK in 8.4s]' },
-      { level: 'info', text: 'Task 3/4: train_forecasting_kpi_model starting...' },
-      { level: 'info', text: 'Fitting XGBoost regressor on ad impressions & media placements...' },
-      { level: 'success', text: 'Model validation success. R2 Score: 0.952. RMSE: 0.041' },
-      { level: 'info', text: 'Task 4/4: load_to_redshift starting...' },
-      { level: 'success', text: 'Redshift tables updated and indexed.' },
-      { level: 'success', text: 'Refreshed Looker Studio reporting dashboards.' },
-      { level: 'success', text: 'DAG ad_analysis_pipeline finished successfully. [Exit 0]' }
+      { level: 'info', text: 'Initializing Airflow DAG: retail_agentic_copilot_pipeline' },
+      { level: 'info', text: 'Incoming user query: "total revenue by division in 2024"' },
+      { level: 'info', text: 'Intent classification: conversational database query' },
+      { level: 'info', text: 'Invoking Gemini Flash to generate read-only PostgreSQL query...' },
+      { level: 'info', text: 'SQL generated: SELECT division, SUM(price) FROM sales WHERE EXTRACT(YEAR FROM sale_date) = 2024 GROUP BY division;' },
+      { level: 'info', text: 'Verifying query with AST Guardrail...' },
+      { level: 'success', text: 'sqlglot: AST verification PASSED. Safe read-only SELECT query.' },
+      { level: 'info', text: 'Executing validated query on PostgreSQL database...' },
+      { level: 'success', text: 'Returned 7 rows in 42ms.' },
+      { level: 'info', text: 'Formatting response with hallucination-safe narrative parser...' },
+      { level: 'success', text: 'Response streamed to front-end client via Server-Sent Events.' },
+      { level: 'success', text: 'Orchestrator session finished successfully. [Exit 0]' }
     ]
   },
   {
-    id: 'elt_warehousing',
-    title: 'ELT - Data Warehousing',
-    githubUrl: 'https://github.com/bkget/ELT-Data-Warehousing',
-    tech: ['Python', 'SQL', 'Airflow', 'PostgreSQL', 'dbt', 'Docker', 'Redash'],
+    id: 'ad_prediction',
+    title: 'AdTech Creative Performance Prediction',
+    githubUrl: 'https://github.com/bkget/Ad-Challenge',
+    tech: ['Python', 'PostgreSQL', 'FastAPI', 'LightGBM', 'ResNet50', 'OpenCV', 'Docker', 'DVC'],
     bullets: [
-      'Engineered a scalable data warehouse infrastructure to efficiently store and manage vehicle trajectory data sourced from CSV files, deploying a PostgreSQL database for robust data storage.',
-      'Leveraged dbt for seamless data transformation processes, ensuring data integrity, data quality, and schema enforcement.',
-      'Utilized Airflow for effective data orchestration, automating and scheduling workflows for streamlined operations.',
-      'Presented comprehensive reports and visualizations using Redash for enhanced data analysis and decision-making capabilities.'
+      'Built an end-to-end Machine Learning platform predicting click-through rate (CTR) and engagement rate (ER) of digital advertising images before launch.',
+      'Extracted 2048-dimensional visual embeddings using ResNet50 deep learning, compressing them via PCA to 32 dimensions for LightGBM compatibility.',
+      'Engineered a multimodal feature store linking campaign parameters, budgets, and user contexts with image-based color histograms, brightness, and visual features.',
+      'Implemented GroupKFold cross-validation grouped by campaign to prevent data leakage and ensure generalizability on unseen campaigns.'
     ],
     logs: [
-      { level: 'info', text: 'Initializing Airflow DAG: vehicle_trajectory_elt' },
-      { level: 'info', text: 'Task 1/3: raw_csv_extract starting...' },
-      { level: 'info', text: 'Extracting vehicle trajectory logs from local ingestion mount...' },
-      { level: 'success', text: 'Successfully parsed 4,200,000 GPS ping data rows.' },
-      { level: 'info', text: 'Task 2/3: transform_and_load_postgres starting...' },
-      { level: 'info', text: 'dbt: compiling models in postgres...' },
-      { level: 'info', text: 'dbt: running model stg_trajectory_telemetry [OK]' },
-      { level: 'info', text: 'dbt: running model fct_vehicle_trips [OK]' },
-      { level: 'success', text: 'All dbt transformations completed successfully.' },
-      { level: 'info', text: 'Task 3/3: refresh_redash_cache starting...' },
-      { level: 'success', text: 'Redash telemetry dashboards updated successfully.' },
-      { level: 'success', text: 'DAG vehicle_trajectory_elt finished successfully. [Exit 0]' }
+      { level: 'info', text: 'Starting pipeline run: ad_creative_prediction_training' },
+      { level: 'info', text: 'Loading raw datasets: briefing.csv and inventory.parquet' },
+      { level: 'info', text: 'Preprocessing image creatives and extracting visual heuristics (brightness, saturation, entropy)...' },
+      { level: 'info', text: 'Passing 144 creative PNG images through ResNet50 backbone...' },
+      { level: 'success', text: 'Visual features extracted. Dim-reduction (PCA) compressed 2048-D to 32-D vectors.' },
+      { level: 'info', text: 'Assembling multimodal dataset (Contextual features + Tabular meta + Visual features)...' },
+      { level: 'info', text: 'Training LightGBM Regressor using GroupKFold cross-validation (Grouped by campaign)...' },
+      { level: 'success', text: 'Training complete. R2 Score: 0.952 (Multimodal model improved R2 by 19.3%).' },
+      { level: 'info', text: 'Exporting benchmarks and pipeline weights to PostgreSQL database...' },
+      { level: 'success', text: 'Inference model saved to models/lightgbm_v1.bin and loaded by FastAPI serving layer.' },
+      { level: 'success', text: 'Pipeline run complete. [Exit 0]' }
+    ]
+  },
+  {
+    id: 'open_source_platform',
+    title: 'Modern Open-Source Data Platform (CDC & OLAP)',
+    githubUrl: 'https://github.com/bkget/inkomoko-data-platform',
+    tech: ['PostgreSQL', 'Debezium', 'Redpanda', 'ClickHouse', 'dbt', 'Dagster', 'Prometheus', 'Grafana'],
+    bullets: [
+      'Designed a production-grade, vendor-agnostic data platform capable of processing real-time analytical workloads under constrained resources.',
+      'Implemented near-real-time Change Data Capture (CDC) utilizing Debezium to stream logical replication slots from PostgreSQL OLTP into Redpanda (Kafka-compatible).',
+      'Configured ClickHouse OLAP database with a native Kafka engine to automatically consume streams, collapsing event history using ReplacingMergeTree and dbt staging.',
+      'Orchestrated the complete pipeline (API ingestion, CDC verification, dbt compiles, and dbt tests) using Dagster for end-to-end data lineage.',
+      'Built observability framework featuring Grafana alerts and cdc-monitor to compare Postgres/ClickHouse row counts and trigger alert notifications on CDC replication lag.'
+    ],
+    logs: [
+      { level: 'info', text: 'Initializing Dagster asset materialization...' },
+      { level: 'info', text: 'Polling public Kiva Loan REST API search endpoint...' },
+      { level: 'success', text: 'Upserted 5,000 active loan records into PostgreSQL oltp.raw_data.' },
+      { level: 'info', text: 'Debezium CDC capturing WAL logical replication slot changes...' },
+      { level: 'success', text: 'Streamed 5,000 JSON CDC event messages to Redpanda topic: cdc.raw_data.loans' },
+      { level: 'info', text: 'ClickHouse Kafka-engine consuming Redpanda topics in real-time...' },
+      { level: 'success', text: 'Sunk 5,000 raw events directly to raw_data.loans_raw' },
+      { level: 'info', text: 'Dagster running dbt models inside ClickHouse...' },
+      { level: 'info', text: 'dbt: running model staging.stg_loans (ReplacingMergeTree FINAL) [OK]' },
+      { level: 'info', text: 'dbt: running model analytics.mart_loans_by_sector [OK]' },
+      { level: 'success', text: 'dbt validations passed. 0 data errors detected.' },
+      { level: 'info', text: 'cdc-monitor checking data sync status...' },
+      { level: 'success', text: 'Observability check: CDC row count drift = 0, replication lag = 0.38s.' },
+      { level: 'success', text: 'Asset materialization complete.' }
     ]
   }
 ];
 
 export default function Projects() {
-  const [activeProjId, setActiveProjId] = useState('ad_analysis');
+  const [activeProjId, setActiveProjId] = useState('agentic_copilot');
   const [consoleLogs, setConsoleLogs] = useState([]);
   const [isRunning, setIsRunning] = useState(false);
   const logTimerRef = useRef(null);

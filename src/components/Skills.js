@@ -27,6 +27,7 @@ const skills = [
   { name: 'Apache Trino', category: 'processing' },
   { name: 'Data Build Tool (dbt)', category: 'processing' },
   { name: 'Apache Kafka', category: 'processing' }, 
+  { name: 'Databricks', category: 'processing' },
   { name: 'Salesforce Marketing Cloud (SFMC)', category: 'processing' },
   { name: 'Druid', category: 'processing' },
   { name: 'Azure Data Factory', category: 'processing' },
@@ -34,6 +35,9 @@ const skills = [
   // Storage & Warehousing
   { name: 'Amazon Redshift', category: 'storage' },
   { name: 'Snowflake', category: 'storage' },
+  { name: 'AWS (Redshift, RDS, EMR, MWAA, Glue)', category: 'storage' },
+  { name: 'ClickHouse', category: 'storage' },
+  { name: 'Apache Iceberg', category: 'storage' },
   { name: 'AWS S3', category: 'storage' },
   { name: 'Google Cloud Storage', category: 'storage' },
   { name: 'Google BigQuery', category: 'storage' },
@@ -51,7 +55,7 @@ const skills = [
   // DevOps & MLOps
   { name: 'Docker', category: 'devops' },
   { name: 'GitHub Actions', category: 'devops' },
-  { name: 'GitHab', category: 'devops' },
+  { name: 'GitHub', category: 'devops' },
   { name: 'GitLab', category: 'devops' }, 
   { name: 'Bash', category: 'devops' }, 
 ];

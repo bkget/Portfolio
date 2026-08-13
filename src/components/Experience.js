@@ -11,15 +11,17 @@ const experiences = [
     period: 'Dec 2025 – Present',
     location: 'Addis Ababa, Ethiopia',
     bullets: [
-      'Engineered the transition from unmanaged S3 Parquet to a governed Apache Iceberg lakehouse and Redshift Datawarehouse utilizing a medallion architecture, defining the core platform standards for a multi-bank partner fintech data ecosystem.',
-      'Designed and engineered an automated Ethiopian location standardization pipeline, normalizing highly fragmented, multi-layer user inputs into official government regional hierarchies to drive accurate business reporting.',
-      'Built robust Apache Airflow pipelines to ingest data from varied sources, staged it in AWS S3, applying complex transformations, managing multi-version storage in Trino, and loading reporting-ready data into Amazon Redshift.'
+      'Engineered the transition from unmanaged S3 Parquet to a governed Apache Iceberg lakehouse and Redshift Data Warehouse utilizing a medallion architecture, defining the core platform standards for a multi-bank partner fintech data ecosystem.',
+      'Architected and deployed an OLake-based Change Data Capture (CDC) mechanism in the middleware infrastructure, replacing legacy full-dump data ingestion and enabling real-time delta tracking into a Trino-managed Apache Iceberg bronze layer.',
+      'Designed and engineered an automated Ethiopian location standardization pipeline, normalizing highly fragmented, multi-layer user inputs into official government regional hierarchies (Region, City, Zone/Sub-city, and Woreda) to drive accurate business reporting.',
+      'Built robust Apache Airflow pipelines to ingest data from varied sources, staged it in AWS S3, applying complex transformations, managing multi-version storage in Trino, and loading reporting-ready data into Amazon Redshift.',
+      'Established an automated data observability framework by developing holistic data ingestion and freshness monitoring dashboards coupled with real-time Microsoft Teams alerts, drastically minimizing time-to-detect (TTD) for pipeline failures and processing delays.'
     ]
   },
   {
     company: 'Safaricom Telecommunications Ethiopia',
     role: 'Big Data Analytics Engineer',
-    period: 'Sep 2023 – Nov 2026',
+    period: 'Sep 2023 – Nov 2025',
     location: 'Addis Ababa, Ethiopia',
     bullets: [
       'Leveraged data from 15 million active Telecom subscribers using advanced analytics to shape targeted marketing and service delivery strategies, ensuring 100% availability of aggregated customer lifecycle data in the managed data warehouse.',
@@ -28,7 +30,7 @@ const experiences = [
     ]
   },
   {
-    company: 'Adjibar Technologies',
+    company: 'Mattress Firm',
     role: 'Data Engineer, Contract',
     period: 'Feb 2024 – Aug 2025',
     location: 'US, Remote',
@@ -57,7 +59,8 @@ const experiences = [
     period: 'Oct 2015 – Sep 2019',
     location: 'Haramaya, Ethiopia',
     bullets: [
-      'Four years of IT teaching, fostering interactive learning, guiding students in innovative research projects, advising and evaluating graduating students’ practical projects for industry collaboration, leading external training sessions, and showcasing strong organizational skills.'
+      'Served as an IT Lecturer, delivering advanced technical instruction, leading external training sessions, and establishing standardized frameworks for evaluating complex engineering and practical projects.',
+      'Mentored, coached, and guided students through innovative research and technical projects, setting rigorous documentation and implementation standards to foster industry collaboration.'
     ]
   }
 ];
