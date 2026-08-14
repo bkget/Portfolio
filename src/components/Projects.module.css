@@ -104,8 +104,8 @@
 
 /* Terminal Simulator Styling */
 .terminalContainer {
-  background: #030307;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #090d16;
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   display: flex;
   flex-direction: column;
@@ -115,9 +115,9 @@
 }
 
 .terminalHeader {
-  background: #0a0a0f;
+  background: #111622;
   padding: 0.75rem 1.25rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--border-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
